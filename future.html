@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina - The Future</title>
+    <!-- Using Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        /* Ambient background glow */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 255, 65, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            animation: pulse 5s infinite ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            max-width: 800px;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .year {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: #00ff41;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .back-btn {
+            color: #888;
+            text-decoration: none;
+            border: 1px solid #333;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .back-btn:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="year">Establish 2030</div>
+
+    <h1>"Join us in 2030 when we can make a dream reality. <br>The future is brighter when we build it together."</h1>
+
+    <a href="index.html" class="back-btn">Return to Now</a>
+
+</body>
+
+</html>
