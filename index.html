@@ -335,8 +335,43 @@
                 <div id="coinPrice" class="price-display">...</div>
                 <div id="coinChange" class="change-display"></div>
             </div>
+
+            <!-- New Market Stats -->
+            <div class="market-stats"
+                style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.8rem; color: #888;">
+                <div>
+                    <div style="text-transform: uppercase; font-size: 0.7rem;">Market Cap</div>
+                    <div id="marketCap" style="color: white; font-weight: 600;">...</div>
+                </div>
+                <div>
+                    <div style="text-transform: uppercase; font-size: 0.7rem;">24h Volume</div>
+                    <div id="marketVol" style="color: white; font-weight: 600;">...</div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Donation Section -->
+    <footer style="background: black; padding: 2rem 5%; border-top: 1px solid #333; text-align: center;">
+        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Support the Project (Donate Crypto)</p>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+            <div class="crypto-addr">
+                <span style="color: #f7931a; font-weight: bold;">BTC</span>
+                <span
+                    style="font-family: monospace; color: #aaa; background: #222; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">1A1z...ReplaceMe</span>
+            </div>
+            <div class="crypto-addr">
+                <span style="color: #627eea; font-weight: bold;">ETH</span>
+                <span
+                    style="font-family: monospace; color: #aaa; background: #222; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">0x00...ReplaceMe</span>
+            </div>
+            <div class="crypto-addr">
+                <span style="color: #00ff41; font-weight: bold;">SOL</span>
+                <span
+                    style="font-family: monospace; color: #aaa; background: #222; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Hv3...ReplaceMe</span>
+            </div>
+        </div>
+    </footer>
 
     <section class="how-it-works">
         <div class="section-header">
@@ -446,6 +481,8 @@
         // --- Logic Integration ---
         const priceEl = document.getElementById('coinPrice');
         const changeEl = document.getElementById('coinChange');
+        const capEl = document.getElementById('marketCap');
+        const volEl = document.getElementById('marketVol');
         const buttons = document.querySelectorAll('.coin-btn');
 
         // Initial Track
@@ -457,12 +494,14 @@
             if (btnElement) btnElement.classList.add('active');
 
             priceEl.innerText = "...";
+            capEl.innerText = "...";
+            volEl.innerText = "...";
 
             try {
                 // Disable buttons while loading
                 buttons.forEach(b => b.style.pointerEvents = 'none');
 
-                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd&include_24hr_change=true`);
+                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd&include_24hr_change=true&include_market_cap=true&include_24hr_vol=true`);
 
                 if (!response.ok) {
                     if (response.status === 429) throw new Error('Rate Limited');
@@ -477,8 +516,20 @@
 
                 const price = coinData.usd;
                 const change = coinData.usd_24h_change;
+                const cap = coinData.usd_market_cap;
+                const vol = coinData.usd_24h_vol;
 
                 priceEl.innerText = `$${price.toLocaleString()}`;
+
+                // Format large numbers (Billions/Millions)
+                const formatNum = (num) => {
+                    if (num >= 1e9) return `$${(num / 1e9).toFixed(2)}B`;
+                    if (num >= 1e6) return `$${(num / 1e6).toFixed(2)}M`;
+                    return `$${num.toLocaleString()}`;
+                };
+
+                capEl.innerText = formatNum(cap);
+                volEl.innerText = formatNum(vol);
 
                 // Color Logic
                 const targetColor = change >= 0 ? 0x00ff41 : 0xff003c;

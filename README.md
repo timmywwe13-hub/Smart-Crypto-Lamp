@@ -35,5 +35,13 @@ A high-end, 3D interactive tracking dashboard for cryptocurrency prices. This pr
 4. **View Your Site**
    - After 1-2 minutes, refresh the Pages settings to see your live URL (e.g., `https://yourusername.github.io/lumina-lamp/`).
 
+## 💰 Accepting Donations
+
+The `index.html` file includes a **Support the Project** footer. To receive real crypto donations:
+
+1. Open `index.html`.
+2. Search for `ReplaceMe` (Lines ~358-372).
+3. Replace the placeholder addresses (like `1A1z...ReplaceMe`) with your **actual Bitcoin, Ethereum, and Solana wallet addresses**.
+
 ---
 *Created for the Future.*
