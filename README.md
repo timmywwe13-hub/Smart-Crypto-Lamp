@@ -1,22 +1,65 @@
-# 💡 Lumina - Smart Lamp Dashboard
+# 💡 Lumina - Crypto Dashboard & Smart Lamp
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/lumina-lamp?style=flat-square)
 ![GitHub language count](https://img.shields.io/github/languages/count/yourusername/lumina-lamp?style=flat-square)
 
-A high-end, 3D interactive tracking dashboard for cryptocurrency prices. This project uses **Three.js** to render a glowing orb that changes color based on real-time market trends (Green for UP, Red for DOWN).
+A premium, interactive cryptocurrency dashboard featuring a 3D smart lamp visualization that changes color based on real-time market trends. Built with **Three.js** and live data from **CoinGecko** and **Alternative.me** APIs.
 
 ## ✨ Features
 
-- **3D Visualization**: A rotating Icosahedron geometry that reacts to data.
-- **Live Crypto Data**: Fetches real-time prices for BTC, ETH, and SOL using the CoinGecko API.
-- **Cyberpunk UI**: Glassmorphism cards, neon accents, and deep dark mode.
-- **Fully Responsive**: The 3D camera adapts to mobile screens (`index.html`) and includes a dedicated Vision page (`future.html`).
+### 🔮 3D Smart Lamp Visualization
+- Rotating Icosahedron geometry that reacts to market data
+- **Green glow** = market up, **Red glow** = market down
+- Premium wireframe aesthetic with pulsing core
+
+### 🐋 Live Transaction Ticker
+- Scrolling whale alerts showing large crypto movements
+- Creates a sense of real-time blockchain activity
+
+### 📊 Fear & Greed Index Gauge
+- Beautiful semi-circular gauge showing market sentiment (0-100)
+- Color-coded from Extreme Fear (red) to Extreme Greed (green)
+- Data from Alternative.me API
+
+### 📈 Price History Chart
+- Interactive Chart.js line chart
+- Toggle between **24h**, **7d**, and **30d** timeframes
+- Gradient fill with smooth hover interactions
+
+### 🌐 Top 15 Cryptocurrencies Dashboard
+- Live prices with coin logos
+- 7-day sparkline charts for each coin
+- Click any coin to update the lamp and main chart
+
+### 💼 Portfolio Calculator
+- Add/remove your holdings
+- Real-time total value calculation
+- 24h profit/loss indicators
+- **Persists across page refreshes** using localStorage
+
+### 🎨 Premium Design
+- Cyberpunk UI with glassmorphism effects
+- Neon accents and deep dark mode
+- Fully responsive (mobile + desktop)
 
 ## 📂 Project Structure
 
-- `index.html`: The main dashboard with the 3D lamp and controls.
-- `future.html`: A conceptual "Vision 2030" page linked from the main site.
-- `README.md`: Documentation (You are here).
+```
+lumina-lamp/
+├── index.html    # Main dashboard with all features
+├── future.html   # "Vision 2030" concept page
+└── README.md     # Documentation (you are here)
+```
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Three.js | 3D lamp visualization |
+| Chart.js | Price history charts |
+| CoinGecko API | Crypto prices & market data |
+| Alternative.me API | Fear & Greed Index |
+| localStorage | Portfolio persistence |
 
 ## 🚀 How to Deploy on GitHub Pages
 
@@ -40,8 +83,24 @@ A high-end, 3D interactive tracking dashboard for cryptocurrency prices. This pr
 The `index.html` file includes a **Support the Project** footer. To receive real crypto donations:
 
 1. Open `index.html`.
-2. Search for `ReplaceMe` (Lines ~358-372).
-3. Replace the placeholder addresses (like `1A1z...ReplaceMe`) with your **actual Bitcoin, Ethereum, and Solana wallet addresses**.
+2. Search for `ReplaceMe` in the footer section.
+3. Replace the placeholder addresses with your **actual Bitcoin, Ethereum, and Solana wallet addresses**.
+
+## 📡 API Rate Limits
+
+| API | Limit | Notes |
+|-----|-------|-------|
+| CoinGecko | 10-30 calls/min | Free tier, no key required |
+| Alternative.me | Generous | No auth required |
+
+The site handles rate limiting gracefully with error messages.
+
+## 🖥️ Browser Support
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
 
 ---
-*Created for the Future.*
+*Created for the Future.* 🚀
